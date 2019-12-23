@@ -35,6 +35,9 @@ steps:
     minorVersion: '0'
     patchVersion: '0'
  
+- task: NuGetAuthenticate@0
+  inputs:
+    nuGetServiceConnections: 'MyNugetConnection'
 - task: NuGetCommand@2
   displayName: 'Publish NuGet package'
   inputs:
