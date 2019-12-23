@@ -35,13 +35,10 @@ steps:
     minorVersion: '0'
     patchVersion: '0'
  
+
 - task: NuGetAuthenticate@0
-  inputs:
-    nuGetServiceConnections: 'MyNugetConnection'
-- task: NuGetCommand@2
-  displayName: 'Publish NuGet package'
-  inputs:
-    command: push
-    publishVstsFeed: 'Tailspin.SpaceGame.Web.Models1'
-    allowPackageConflicts: true
-  condition: succeeded()
+- task: NuGetToolInstaller@1 # Optional if nuget.exe is already on the path
+- script: nuget restore
+# ...
+- script: nuget push -ApiKey Tailspin.SpaceGame.Web.Models1 -Source https://pkgs.dev.azure.com/RoopsLand/2b7c2147-4b4d-446b-933a-391facbbd7aa/_packaging/Tailspin.SpaceGame.Web.Models1/nuget/v3/index.json Tailspin.SpaceGame.Web.Models1.*.nupkg
+
