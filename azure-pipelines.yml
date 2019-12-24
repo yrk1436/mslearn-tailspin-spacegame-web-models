@@ -34,11 +34,7 @@ steps:
     majorVersion: '1'
     minorVersion: '0'
     patchVersion: '0'
- 
-- task: NuGetAuthenticate@0
-  inputs:
-    nuGetServiceConnections: 'MyNugetConnection'
-    forceReinstallCredentialProvider: true
+
 - task: NuGetCommand@2
   inputs:
     command: 'push'
