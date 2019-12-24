@@ -35,10 +35,11 @@ steps:
     minorVersion: '0'
     patchVersion: '0'
  
+- task: NuGetAuthenticate@0
+  displayName: 'NuGet Authenticate'
 - task: NuGetCommand@2
-  displayName: 'Publish NuGet package'
+  displayName: 'NuGet push'
   inputs:
     command: push
     publishVstsFeed: 'Tailspin.SpaceGame.Web.Models1'
     allowPackageConflicts: true
-  condition: succeeded()
